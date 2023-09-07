@@ -1,0 +1,56 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <form th:object="${item}" class="card" method="post">
+    	<div class="card-body">
+    		<div class="row mb-3">
+		        <div class="col">
+		            <label>Mã</label>
+		            <input th:field="*{id}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Khách hàng</label>
+		            <input th:field="*{account.username}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Ngày đặt đơn hàng</label>
+		            <input th:field="*{orderDate}" class="form-control" readonly>
+		        </div>
+		        <div class="col">
+		            <label>Thành tiền</label>
+		            <input th:field="*{amount}" class="form-control" readonly>
+		        </div>
+	        </div>
+	        <div class="row mb-3">
+		        <div class="col">
+		            <label>Người Nhận</label>
+		            <input th:field="*{recipient}" class="form-control">
+		        </div>
+		        <div class="col">
+		            <label>Số điện thoại</label>
+		            <input th:field="*{mobile}" class="form-control">
+		        </div>
+		        <div class="col-4">
+		            <label>Địa chỉ giao hàng</label>
+		            <input th:field="*{address}" class="form-control">
+		        </div>
+		        <div class="col-2">
+		            <label>Trạng thái đặt hàng</label>
+		            <select th:field="*{status.id}" class="form-select">
+		            	<th:block th:each="s: ${statuses}">
+		            		<option th:value="${s.id}" th:text="${s.name}"></option>
+		            	</th:block>
+		            </select>
+		        </div>
+	        </div>
+	        <div class="mb-3">
+	            <label>Ghi chú</label>
+	            <textarea th:field="*{notes}" class="form-control" rows="4"></textarea>
+	        </div>
+	        <div class="mb-3">
+	        	<hr th:replace="/admin/order/_details">
+	        </div>
+        </div>
+        <div class="card-footer">
+            <hr th:replace="/admin/shared/frags::btn-crud('order', *{id})"/>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<html th:replace="/shared/layout::dynamic(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<main>
+	<h4 th:if="${namePage != null}">[[${namePage}]]</h4>
+	<h4 th:if="${namePage == null}">Sản phẩm</h4>
+	<hr>
+	<div class="row">
+		<div  th:each="p: ${list}" class="col-sm-3 CartProduct" >
+			<div th:fragment="pbox" class="card p-3 mb-3 shadow" id="hover-border" th:attr="data-id=${p.id}" > <!-- data-id="${p.id}" -->
+				<div class="">
+					<div th:text="${p.name}"></div>
+				</div>
+				<div class="card-body text-center pt-5" style="height: 250px">
+					<a th:href="@{|/product/detail/${p.id}|}"> <!-- gọi đến trang detail -->
+							<img th:src="@{|/images/items/${p.image}|}" style="height: 80%; max-width: 100%" alt="ảnh sản phẩm" >
+					</a>
+				</div>
+				<div class="text-end">
+					<div>
+						<del th:if="${p.discount > 0}" th:text="@{|${#numbers.formatDecimal(p.unitPrice, 0, 'COMMA', 0, 'POINT')}đ|}"></del>
+						<i th:text="@{|${#numbers.formatDecimal(p.promotePrice, 0, 'COMMA', 0, 'POINT')}đ|}"></i>
+					</div>
+					<!-- button action -->
+					<div th:replace="product/_item-actions"></div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</main>
+
+</html>

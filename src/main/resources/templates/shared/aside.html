@@ -1,0 +1,13 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div class="card mb-3 shadow-sm bg-body rounded ">
+        <div class="card-header fw-bold">DANH MỤC <i class='bx bx-category bx-tada bx-rotate-90'></i></div>
+        <div class="list-group list-group-flush">
+	         <th:block th:each="c :${categories}">
+	        	<a th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action">
+	        		<span th:text="${c.nameVn}"></span>
+	        		<span class="badge rounded-pill bg-secondary float-end" th:text="${c.products.size()}"></span>
+	        	</a>	
+	        </th:block> 
+        </div>
+    </div>
+</div>
