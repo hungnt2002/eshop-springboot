@@ -10,10 +10,10 @@
 		<relativePath /> 
 		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>estore</groupId>
-	<artifactId>estore</artifactId>
+	<groupId>hungnt2004110032</groupId>
+	<artifactId>hungnt2004110032</artifactId>
 	<version>1.0</version>
-	<name>estore</name>
+	<name>hungnt2004110032</name>
 	<description>Spring Boot Online Store</description>
 	<properties>
 		<java.version>19</java.version>
